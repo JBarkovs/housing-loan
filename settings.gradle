@@ -1,2 +1,3 @@
-rootProject.name = 'loans'
+rootProject.name = 'housing-loans'
+include 'loan-server'
 
