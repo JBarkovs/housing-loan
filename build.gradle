@@ -6,4 +6,5 @@ subprojects {
         mavenCentral()
     }
 }
+project(':loan-client') {}
 project(':loan-server') {}

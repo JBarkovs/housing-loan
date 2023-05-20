@@ -1,3 +1,3 @@
 rootProject.name = 'housing-loans'
-include 'loan-server'
+include 'loan-client', 'loan-server'
 
