@@ -1,0 +1,8 @@
+subprojects {
+    group = 'org.loan'
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenCentral()
+    }
+}
