@@ -6,12 +6,14 @@ import com.example.loanserver.loan.LoanService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.text.DecimalFormat;
 import java.util.function.BiFunction;
 
 @Service
 @RequiredArgsConstructor
 public class HousingService {
 
+    private static final DecimalFormat df = new DecimalFormat("0.00");
     private final LoanService loanService;
 
     public Loan getHousingLoanCost(LoanParams params) {
@@ -26,9 +28,8 @@ public class HousingService {
             Double monthlyPayment = (params.getPrincipleAmount() * monthlyRate * Math.pow(1 + monthlyRate, periodMonths))
                                     / (Math.pow(1 + monthlyRate, periodMonths) - 1);
             return Loan.builder()
-                    .monthlyPayment(monthlyPayment)
-                    .principleAmount(params.getPrincipleAmount())
-                    .interestAmount(monthlyPayment * periodMonths - params.getPrincipleAmount())
+                    .monthlyPayment(Double.valueOf(df.format(monthlyPayment)))
+                    .totalLoanCost(Double.valueOf(df.format(monthlyPayment * periodMonths)))
                     .build();
         };
     }

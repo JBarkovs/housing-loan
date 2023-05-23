@@ -1,16 +1,20 @@
-<h1>Housing loan</h1>
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-  <p>Please provide loan information</p>
-  <div>
-    <label for="principleAmount">Principle amount: </label>
-    <input id="principleAmount" type="number" formControlName="principleAmount">
+<div class="form"[ngClass]="{'full-form' : loanData}">
+  <h1>Housing loan</h1>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+      <label for="principleAmount">Principle amount: </label>
+      <input id="principleAmount" type="number" formControlName="principleAmount" placeholder="Principle">
+    </div>
+    <div>
+      <label for="periodYears">Payment period in years: </label>
+      <input id="periodYears" type="number" formControlName="periodYears" placeholder="Duration">
+    </div>
+
+    <button class="btn" type="submit" [disabled]="!form.valid">{{getButtonText()}}</button>
+  </form>
+
+  <div *ngIf="loanData">
+      <p class="loan-data">Monthly payment: {{loanData.monthlyPayment}}</p>
+      <p class="loan-data">Total loan cost: {{loanData.totalLoanCost}}</p>
   </div>
-
-  <div>
-    <label for="periodYears">Payment period in years: </label>
-    <input id="periodYears" type="number" formControlName="periodYears">
-  </div>
-
-  <button type="submit" [disabled]="!form.valid">Calculate</button>
-
-</form>
+</div>

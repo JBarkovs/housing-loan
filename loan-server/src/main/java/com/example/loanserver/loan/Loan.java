@@ -7,6 +7,5 @@ import lombok.Data;
 @Builder
 public class Loan {
     private Double monthlyPayment;
-    private Double principleAmount;
-    private Double interestAmount;
+    private Double totalLoanCost;
 }
