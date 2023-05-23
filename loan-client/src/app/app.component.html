@@ -1,1 +1,16 @@
-<h1>{{title}}</h1>
+<h1>Housing loan</h1>
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <p>Please provide loan information</p>
+  <div>
+    <label for="principleAmount">Principle amount: </label>
+    <input id="principleAmount" type="number" formControlName="principleAmount">
+  </div>
+
+  <div>
+    <label for="periodYears">Payment period in years: </label>
+    <input id="periodYears" type="number" formControlName="periodYears">
+  </div>
+
+  <button type="submit" [disabled]="!form.valid">Calculate</button>
+
+</form>
